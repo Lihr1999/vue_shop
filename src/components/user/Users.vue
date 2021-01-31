@@ -336,6 +336,7 @@
         },
         // 展示分配角色的对话框
         async setRole(userInfo) {
+          // 把传过来的当前行数据保存到this.userInfo身上，供后续分配角色对话框使用
           this.userInfo = userInfo
           // 在展示对话框之前，获取所有角色的列表
           const { data: res } = await this.$http.get('roles')
@@ -360,6 +361,8 @@
         setRoleDialogClosed() {
           // 分配角色对话框关闭的时候重置this.selectedRoleId
           this.selectedRoleId = ''
+          // 重置this.userInfo所存储的当前行用户信息
+          this.userInfo = ''
         }
       },
       created() {
