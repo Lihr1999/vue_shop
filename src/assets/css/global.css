@@ -22,3 +22,23 @@ html, body, #app {
 .el-pagination {
     margin-top: 15px;
 }
+
+/*在全局的global.css样式中给el-cascader-panel添加高度*/
+.el-cascader-panel{
+    height: 200px;
+}
+
+.el-cascader-panel .el-radio{ 
+    z-index: 10;
+    width: 99%; 
+    height: 99%;
+    position: absolute; 
+    top: 10px; 
+    right: -12px; 
+}
+.el-cascader-panel .el-radio__input{
+    visibility: hidden;  
+}
+.el-cascader-panel .el-cascader-node__postfix{ 
+    top: 10px; 
+}
