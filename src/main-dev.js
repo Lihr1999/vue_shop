@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import './plugins/element.js'
 import store from './store'
+import './plugins/element.js'
 
 // 导入富文本编辑器
 import VueQuillEditor from 'vue-quill-editor'
 // 导入富文本对应的css样式
-// import 'quill/dist/quill.core.css' // import styles
-// import 'quill/dist/quill.snow.css' // for snow theme
-// import 'quill/dist/quill.bubble.css' // for bubble theme
+import 'quill/dist/quill.core.css' // import styles
+import 'quill/dist/quill.snow.css' // for snow theme
+import 'quill/dist/quill.bubble.css' // for bubble theme
 
 // 导入global.css
 import './assets/css/global.css'
@@ -24,9 +24,9 @@ import TreeTable from 'vue-table-with-tree-grid'
 // 把TreeTable通过组件的方式挂载到Vue身上
 // Vue.component('tree-table', TreeTable)
 
-// 导入NProgress包的 js文件和css文件
+// 导入进度条NProgress包的 js文件和css文件
 import NProgress from 'nprogress'
-// import 'nprogress/nprogress.css'
+import 'nprogress/nprogress.css'
 
 // 导入axios
 import axios from 'axios'
@@ -38,10 +38,9 @@ axios.interceptors.request.use(config => {
   // console.log(config)
   // 展示NProgress进度条
   NProgress.start()
-  // 设置请求头 location保存的方法
+  // 设置请求头 location
   // config.headers.Authorization = window.sessionStorage.getItem('token')
-  console.log(store)
-  console.log(this.$store)
+  // 设置请求头
   config.headers.Authorization = store.state.token
   // 最后必须return回去config
   return config

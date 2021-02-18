@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import './plugins/element.js'
-import store from './store'
+// import './plugins/element.js'
 
 // 导入富文本编辑器
 import VueQuillEditor from 'vue-quill-editor'
@@ -24,7 +23,7 @@ import TreeTable from 'vue-table-with-tree-grid'
 // 把TreeTable通过组件的方式挂载到Vue身上
 // Vue.component('tree-table', TreeTable)
 
-// 导入NProgress包的 js文件和css文件
+// 导入进度条NProgress包的 js文件和css文件
 import NProgress from 'nprogress'
 // import 'nprogress/nprogress.css'
 
@@ -38,11 +37,8 @@ axios.interceptors.request.use(config => {
   // console.log(config)
   // 展示NProgress进度条
   NProgress.start()
-  // 设置请求头 location保存的方法
-  // config.headers.Authorization = window.sessionStorage.getItem('token')
-  console.log(store)
-  console.log(this.$store)
-  config.headers.Authorization = store.state.token
+  // 设置请求头
+  config.headers.Authorization = window.sessionStorage.getItem('token')
   // 最后必须return回去config
   return config
 })
@@ -87,6 +83,5 @@ Vue.filter('dateFormat', function(originVal) {
 
 new Vue({
   router,
-  store,
   render: h => h(App)
 }).$mount('#app')

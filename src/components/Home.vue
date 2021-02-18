@@ -6,6 +6,7 @@
         <img src="../assets/l.png" alt="">
         <span>电商后台管理系统</span>
       </div>
+      <span>你好！{{ $store.state.username }}</span>
       <el-button type="info" @click="logout">退出</el-button>
     </el-header>
     <!-- 页面主题区域 -->
@@ -80,7 +81,11 @@ export default {
   methods: {
     logout() {
       // 清除session的token
-      window.sessionStorage.removeItem('token')
+      // window.sessionStorage.removeItem('token')
+      // 清除store.state.token
+      this.$store.state.token = ''
+      // 清除用户名
+      window.localStorage.removeItem('username')
       // 重新跳转回登陆页面
       this.$router.push('/login')
     },
