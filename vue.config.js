@@ -12,7 +12,7 @@ module.exports = {
                 axios: 'axios',
                 lodash: '_',
                 echarts: 'echarts',
-                vuex: 'vuex',
+                vuex: 'Vuex',
                 nprogress: 'NProgress',
                 'vue-quill-editor': 'VueQuillEditor'
             })

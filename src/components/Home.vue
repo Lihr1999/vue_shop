@@ -83,9 +83,11 @@ export default {
       // 清除session的token
       // window.sessionStorage.removeItem('token')
       // 清除store.state.token
-      this.$store.state.token = ''
+      this.$store.commit('removeToken')
       // 清除用户名
       window.localStorage.removeItem('username')
+      // 清除token
+      window.localStorage.removeItem('token')
       // 重新跳转回登陆页面
       this.$router.push('/login')
     },

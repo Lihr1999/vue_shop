@@ -35,7 +35,7 @@ const Report = () => import(/* webpackChunkName: "Order_Report" */ '../component
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/login' },
+  { path: '/', redirect: '/home' },
   { path: '/login', component: Login },
   {
     path: '/home',
@@ -68,9 +68,11 @@ router.beforeEach((to, from, next) => {
   // next() 是一个函数方法，是否放行/放行跳转到哪
     // next() 放行  next("/login") 强制跳转
   if (to.path === '/login') return next()
-  // const tokenStr = window.sessionStorage.getItem('token')
-  const tokenStr = store.state.token
-  if (!tokenStr) return next('/login') // 访问的路由不是登录页并且没有登录则强制跳转到登录页
+  // const tokenStr = window.localStorage.getItem('token')
+  // if (!tokenStr) return next('/login') // 访问的路由不是登录页并且没有登录则强制跳转到登录页
+  // 如果store.state.loginStatus === 1那么证明已经登录了
+  console.log(store.state.loginStatus)
+  if (store.state.loginStatus !== 1) return next('/login')
   next() // 放行
 })
 

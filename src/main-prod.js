@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 // import './plugins/element.js'
+import store from './store'
 
 // 导入富文本编辑器
 import VueQuillEditor from 'vue-quill-editor'
@@ -37,8 +38,10 @@ axios.interceptors.request.use(config => {
   // console.log(config)
   // 展示NProgress进度条
   NProgress.start()
-  // 设置请求头
-  config.headers.Authorization = window.sessionStorage.getItem('token')
+  // 设置请求头 location
+  if (store.state.token) {
+    config.headers.Authorization = store.state.token
+  }
   // 最后必须return回去config
   return config
 })
@@ -83,5 +86,6 @@ Vue.filter('dateFormat', function(originVal) {
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

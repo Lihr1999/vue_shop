@@ -39,9 +39,9 @@ axios.interceptors.request.use(config => {
   // 展示NProgress进度条
   NProgress.start()
   // 设置请求头 location
-  // config.headers.Authorization = window.sessionStorage.getItem('token')
-  // 设置请求头
-  config.headers.Authorization = store.state.token
+  if (store.state.token) {
+    config.headers.Authorization = store.state.token
+  }
   // 最后必须return回去config
   return config
 })
